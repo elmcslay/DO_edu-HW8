@@ -1,1 +1,50 @@
 ---
+- name: prod state
+  hosts: prod
+  become: yes
+
+  tasks:
+  - name: check git package is present
+    apt:  
+      name: git
+      state: present
+  
+  - name: check git service is started
+    service:  
+      name: git
+      state: started
+
+  - name: check jdk package is present
+    apt: 
+      name: default-jdk
+      state: present
+  
+  - name: check maven package is present
+    apt:
+      name: maven
+      state: present
+
+  - name: check maven service is started
+    service:   
+      name: maven
+      state: started
+
+  - name: check git-repo is cloned
+    git:
+      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+      dest: /tmp
+      clone: yes
+
+  - name: check artifact is exists
+    stat:
+      path: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
+    register: result
+
+  - name: create artifact, if it does not exist
+    shell: mvn package
+    args:
+      chdir: tmp/boxfuse-sample-java-war-hello
+    when: not result.stat.exists
+      
+
+
