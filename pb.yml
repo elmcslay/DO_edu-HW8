@@ -39,7 +39,8 @@
   - name: copy artifact to master
     fetch: 
       src: /tmp/hw8/target/hello-1.0.war
-      dest: /tmp  
+      dest: /tmp
+      flat: true
 
 
 - name: prod state
