@@ -27,13 +27,13 @@
 
   - name: check artifact is exists
     stat:
-      path: /tmp/hw8/boxfuse-sample-java-war-hello/target/hello-1.0.war
+      path: /tmp/hw8/target/hello-1.0.war
     register: result
 
   - name: create artifact, if it does not exist
     shell: mvn package
     args:
-      chdir: /tmp/hw8/boxfuse-sample-java-war-hello
+      chdir: /tmp/hw8
     when: not result.stat.exists
       
 
