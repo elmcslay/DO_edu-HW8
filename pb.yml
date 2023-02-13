@@ -66,5 +66,5 @@
   - name: sync artifact to master
     synchronize:
       mode: push
-      src: /tmp/hw8/target/hello-1.0.war
+      src: /tmp/hello-1.0.war
       dest: /var/lib/tomcat9/webapps
