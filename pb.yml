@@ -22,18 +22,18 @@
   - name: check git-repo is cloned
     git:
       repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-      dest: /tmp
+      dest: /tmp/hw8
       clone: yes
 
   - name: check artifact is exists
     stat:
-      path: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
+      path: /tmp/hw8/boxfuse-sample-java-war-hello/target/hello-1.0.war
     register: result
 
   - name: create artifact, if it does not exist
     shell: mvn package
     args:
-      chdir: tmp/boxfuse-sample-java-war-hello
+      chdir: tmp/hw8/boxfuse-sample-java-war-hello
     when: not result.stat.exists
       
 
