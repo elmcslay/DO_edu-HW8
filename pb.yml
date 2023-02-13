@@ -19,11 +19,6 @@
       name: maven
       state: present
 
-  - name: check maven service is started
-    service:   
-      name: maven
-      state: started
-
   - name: check git-repo is cloned
     git:
       repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
