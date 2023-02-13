@@ -43,8 +43,9 @@
   #    flat: true
   - name: sync arfifacts to master
     synchronize:
-      src: /tmp
-      dest: /tmp/hw8/target/hello-1.0.war
+      mode: pull
+      src: /tmp/hw8/target/hello-1.0.war
+      dest: /tmp
 
 
 - name: prod state
