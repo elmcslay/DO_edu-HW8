@@ -36,11 +36,16 @@
       chdir: /tmp/hw8
     when: not result.stat.exists
 
-  - name: copy artifact to master
-    fetch: 
+  #- name: copy artifact to master
+  #   fetch: 
+  #    src: /tmp/hw8/target/hello-1.0.war
+  #    dest: /tmp/
+  #    flat: true
+  - name: sync arfifacts to master
+    synchronize:
       src: /tmp/hw8/target/hello-1.0.war
       dest: /tmp/
-      flat: true
+      existing_only: yes
 
 
 - name: prod state
