@@ -43,7 +43,7 @@
   #    flat: true
   - name: sync arfifacts to master
     synchronize:
-      src: /tmp/
+      src: tmp/
       dest: /tmp/hw8/target/hello-1.0.war
 
 
