@@ -36,12 +36,7 @@
       chdir: /tmp/hw8
     when: not result.stat.exists
 
-  #- name: copy artifact to master
-  #   fetch: 
-  #    src: /tmp/hw8/target/hello-1.0.war
-  #    dest: /tmp/
-  #    flat: true
-  - name: sync arfifacts to master
+  - name: sync artifact to master
     synchronize:
       mode: pull
       src: /tmp/hw8/target/hello-1.0.war
@@ -68,17 +63,8 @@
       name: tomcat9
       state: started
 
-  - name: check artifact in webapps directory is exists
-    stat: 
-      path: /usr/local/tomcat/webapps/hello-1.0.war
-    register: result
-
-  - name: copy artifact, if it does not exist
-    copy:
-      src: /tmp/hello-1.0.war
-      dest: /var/lib/tomcat9/webapps/
-    when: not result.stat.exists
-
-
-
-
+  - name: sync artifact to master
+    synchronize:
+      mode: push
+      src: /tmp/hw8/target/hello-1.0.war
+      dest: /var/lib/tomcat9/webapps
