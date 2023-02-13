@@ -8,11 +8,6 @@
     apt:  
       name: git
       state: present
-  
-  - name: check git service is started
-    service:  
-      name: git
-      state: started
 
   - name: check jdk package is present
     apt: 
