@@ -69,7 +69,7 @@
 
   - name: copy artifact, if it does not exist
     copy:
-      src: /tmp/hw8/target/hello-1.0.war
+      src: /tmp/hello-1.0.war
       dest: /usr/local/tomcat/webapps
     when: not result.stat.exists
 
