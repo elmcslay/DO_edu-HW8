@@ -33,7 +33,7 @@
   - name: create artifact, if it does not exist
     shell: mvn package
     args:
-      chdir: tmp/hw8/boxfuse-sample-java-war-hello
+      chdir: /tmp/hw8/boxfuse-sample-java-war-hello
     when: not result.stat.exists
       
 
