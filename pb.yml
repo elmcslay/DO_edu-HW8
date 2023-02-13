@@ -44,8 +44,7 @@
   - name: sync arfifacts to master
     synchronize:
       src: /tmp/hw8/target/hello-1.0.war
-      dest: /tmp/
-      existing_only: yes
+      dest: /tmp
 
 
 - name: prod state
