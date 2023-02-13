@@ -1,6 +1,6 @@
 ---
-- name: prod state
-  hosts: prod
+- name: build state
+  hosts: build
   become: yes
 
   tasks:
@@ -35,6 +35,44 @@
     args:
       chdir: /tmp/hw8
     when: not result.stat.exists
-      
+
+  - name: copy artifact to master
+    fetch: 
+      src: /tmp/hw8/target/hello-1.0.war
+      dest: /tmp  
+
+
+- name: prod state
+  hosts: prod
+  become: yes
+
+  tasks: 
+  - name: check jdk package is present
+    apt: 
+      name: default-jdk
+      state: present
+
+  - name: check tomcat package is present
+    apt:
+      name: tomcat9
+      state: present
+
+  - name: check tomcat service is started
+    service: 
+      name: tomcat
+      state: started
+
+  - name: check artifact in webapps directory is exists
+    stat: 
+      path: /usr/local/tomcat/webapps/hello-1.0.war
+    register: result
+
+  - name: copy artifact, if it does not exist
+    copy:
+      src: /tmp/hw8/target/hello-1.0.war
+      dest: /usr/local/tomcat/webapps
+    when: not result.stat.exists
+
+
 
 
