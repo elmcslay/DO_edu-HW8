@@ -59,7 +59,7 @@
 
   - name: check tomcat service is started
     service: 
-      name: tomcat
+      name: tomcat9
       state: started
 
   - name: check artifact in webapps directory is exists
