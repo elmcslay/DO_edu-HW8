@@ -45,7 +45,6 @@
     synchronize:
       src: /tmp/hw8/target/hello-1.0.war
       dest: tmp/
-      flat: true
 
 
 - name: prod state
